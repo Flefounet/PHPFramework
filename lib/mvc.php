@@ -8,6 +8,8 @@ function getViewContent($view, array $data = [])
 {
 //Mise en tampon du résultat de l'interpréteur PHP
     ob_start();
+
+
 //Exportation des variables
     extract($data);
 //inclusion de la vue
@@ -87,3 +89,19 @@ function getRouteInfo(string $url, array $routes): array
 
     return $routeInfo;
 }
+
+/**
+ * fonction de connexion à une bd
+ * @return PDO
+ */
+function getPDO():PDO{
+
+return new PDO(
+    DSN,
+    DB_USER,
+    DB_PASS,
+    [PDO ::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+);
+
+}
+

@@ -8,6 +8,10 @@ define("VIEW_PATH", SRC_PATH."/views");
 define("CTRL_PATH", SRC_PATH."/controllers");
 define("MODEL_PATH", SRC_PATH."/models");
 
+
+//Chargement des constantes de l'application
+require SRC_PATH."/conf/const.php";
+
 //chargement de la bilbliothèque mvc
 require ROOT_PATH. "/lib/mvc.php";
 
@@ -21,6 +25,10 @@ if(substr($url, 0,1) != "/"){
     $url = "/". $url;
 }
 
-dispatch($url, $routes);
+$dispatcher -> dispatch();
+$dispatcher = new Dispatcher($router, "\\m2i\\projet\\Controllers\\");
+$router = new Router($url, $routes);
+
+
 
 //require CTRL_PATH."/{$controller}.php";
